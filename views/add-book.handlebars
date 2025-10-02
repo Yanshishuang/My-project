@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book</title>
+</head>
+<body>
+    <h1>Add New Book</h1>
+
+    <form action="/add-book" method="post" enctype="multipart/form-data">
+    <label for="title">Title: <input type="text" name="title" required></label><br>
+    <label for="author">Author: <input type="text" name="author" required></label><br>
+    <label for="genre">Genre: 
+        <select name="genre_id" id="upload-selectbox" required>
+            {{#each genres}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </label><br>
+    <label for="description">Description: <br>
+    <textarea name="description" id="upload-description" rows="5" cols="30" required></textarea>
+    </label><br>
+    <label for="cover">Cover Image: <input type="file" name="cover" accept="image/*" required>
+    </label><br>
+    <button type="submit">Add Book</button>
+    </form>
+
+    <a href="/books">Back to Book List</a>
+</body>
+</html>

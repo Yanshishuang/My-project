@@ -8,6 +8,7 @@ const SQLiteStore = require('connect-sqlite3')(session);
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
+const { title } = require('process');
 
 // Create application
 const app = express();
@@ -87,6 +88,36 @@ app.get('/books/:id',(req,res)=>{
         if(err) console.log(err);
         res.render('book-detail',{...row, title:row.title });
     });
+});
+
+// Routing - Add Book Page
+
+app.get('/add-book',(req,res)=>{
+    db.all("SELECT * FROM genres", [], (err,rows) =>{
+        if(err) console.log(err);
+        res.render('add-book',{ genres: rows,title: "Add Book"});
+    });
+});
+
+app.post('/add-book',upload.single('cover'),(req,res) =>{
+    const {title,author,genre_id,description} = req.body;
+    let coverPath = '';
+
+    if(req.file){
+        coverPath = '/uploads/' + req.file.filename;
+    }
+
+    db.run(`INSERT INTO books (title,author,cover,genre_id,description) VALUES (?,?,?,?,?)`,
+     [title,author,coverPath,genre_id,description],
+     function(err){
+        if(err){
+            console.log(err);
+            res.send("Error adding book");
+        }else{
+            res.redirect('/books');
+        }
+     }   
+    );
 });
 
 // Routing - Login Page
