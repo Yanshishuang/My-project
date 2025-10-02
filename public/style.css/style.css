@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    border: 1px solid black;
+    color: blueviolet;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
