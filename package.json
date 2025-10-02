@@ -1,19 +1,14 @@
 {
-  "name": "portfolio-jl",
+  "name": "yanshishuang",
   "version": "1.0.0",
-  "description": "This is my project for Web Dev is Fun.",
-  "main": "server.js",
+  "description": "web dev",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "node",
-    "express",
-    "js"
-  ],
-  "author": "JL",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
@@ -21,6 +16,16 @@
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
     "express-session": "^1.18.2",
+    "multer": "^2.0.2",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yanshishuang/My-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Yanshishuang/My-project/issues"
+  },
+  "homepage": "https://github.com/Yanshishuang/My-project#readme"
 }
