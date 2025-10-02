@@ -31,7 +31,7 @@ app.use(session({
 
 // Routing - Home Page
 app.get('/',(req,res)=> {
-    res.send('<h1>Welcome to My Project!</h1><p>Homepage is working!</p>');   
+    res.render('home');   
 });
 
 // Start the server
