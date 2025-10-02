@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JL portfolio</title>
+        <link rel="stylesheet" href="/css/jl-styles.css">
+        
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="/">Home</a>
+                <a href="/listofprojects">Projects</a>
+                <a href="/listofskills">Skills</a>
+                <a href="/contact">Contact</a>
+                <span class="emptyspace"> </span>
+                {{#if session.isLoggedIn}}
+                    Hej, {{session.un}}!
+                    <a href="/logout">Logout</a>
+                {{else}}
+                    <a href="/login">Login</a>
+                {{/if}}
+            </div>
+        </header>
+        {{{body}}}
+        <footer>
+            &copy; JL - 2025
+        </footer>
+    </body>
+</html>
