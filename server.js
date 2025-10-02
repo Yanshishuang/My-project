@@ -5,6 +5,9 @@ const bodyParser = require ('body-parser');
 const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const SQLiteStore = require('connect-sqlite3')(session);
+const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
 
 // Create application
 const app = express();
@@ -28,6 +31,32 @@ app.use(session({
     resave: false,
     secret: "YourSecretKeyHere"
 }));
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
+
+// Multer Upload
+const storage= multer.diskStorage({
+    destination:(req,file,cd)=>{
+        cd(null,'public/uploads');
+    },
+    filename: (req,file,cd)=>{
+        cd(null,Date.now() + path.extname(file.originalname));
+    }
+});
+const upload = multer({ storage: storage});
+
+//Generate an admin user
+const adminPassword = "wdf#2025";
+bcrypt.hash(adminPassword,12, (err,hash) => {
+    if (!err){
+        db.run("INSERT OR IGNORE INTO users (username,password) VALUES (?,?)",['admin',hash]);
+    }
+});
+
+app.use((req,res,next) =>{
+    res.locals.session = req.session;
+    next();
+});
 
 // Routing - Home Page
 app.get('/',(req,res)=> {
@@ -44,14 +73,44 @@ app.get('/books',(req,res)=> {
             if(err) {
                 console.log(err);
             }
+            console.log(rows);
             res.render('books',{ books: rows, title: "books"});
         }
     );  
+});
+app.get('/books/:id',(req,res)=>{
+    const id = req.params.id;
+    db.get(`SELECT books.*, genres.name AS genre_name
+        FROM books
+        INNER JOIN genres ON books.genre_id = genres.id
+        WHERE books.id=?`, [id],(err,row)=>{
+        if(err) console.log(err);
+        res.render('book-detail',{...row, title:row.title });
+    });
 });
 
 // Routing - Login Page
 app.get('/login',(req,res)=> {
     res.render('login');   
+});
+
+app.post('/login',(req,res)=>{
+    const { username, password } = req.body;
+    db.get("SELECT * FROM users WHERE username=?", [username],(err,user) =>{
+        if(user && bcrypt.compareSync(password,user.password)){
+        req.session.user = username;
+        res.redirect('/');
+    }else{
+        res.render('login', {error: "Wrong username or password", title :"Login" });
+    }
+});
+});
+
+app.get('/logout',(req,res)=>{
+    req.session.destroy(err => {
+        if(err) console.log(err);
+        res.redirect('/');
+    });
 });
 
 // Start the server

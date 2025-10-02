@@ -9,8 +9,12 @@
     <nav>
         <a href="/">Home</a>
         <a href="/books">Books</a>
+    {{#if session.user}}
+        <p>Logged in as {{session.user}} | <a href="/logout">Logout</a></p>
+        {{else}}
         <a href="/login">Login</a>
-    </nav>
+    {{/if}}
+     </nav>
     {{{body}}}
 </body>
 </html>
