@@ -19,7 +19,6 @@
     "multer": "^2.0.2",
     "sqlite3": "^5.1.7"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Yanshishuang/My-project.git"
