@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books page/title>
+</head>
+<body>
+    <h1>Books List</h1>
+    <ul>
+        {{#each books}}
+        <li>
+            <a href="/books/{[id]}">
+            <img src="{{cover}}" alt="{{title}}"width¨=¨100¨>
+            <strong>{{title}}</strong> by {{author}}
+            </a>
+            <p>Genre:{{genre_name}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</body>
+</html>

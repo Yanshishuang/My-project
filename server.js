@@ -34,6 +34,26 @@ app.get('/',(req,res)=> {
     res.render('home');   
 });
 
+// Routing - Books Page
+app.get('/books',(req,res)=> {
+    db.all(`SELECT books.*, genres.name AS genre_name
+        FROM books
+        INNER JOIN genres ON books.genre_id = genres.id`, 
+        [], 
+        (err,rows) =>{
+            if(err) {
+                console.log(err);
+            }
+            res.render('books',{ books: rows, title: "books"});
+        }
+    );  
+});
+
+// Routing - Login Page
+app.get('/login',(req,res)=> {
+    res.render('login');   
+});
+
 // Start the server
 app.listen(port,() =>{
     console.log(`Server runing at http://localhost:${port}`);
