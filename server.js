@@ -126,6 +126,49 @@ app.get("/delete-book/:id", (req, res) => {
   });
 });
 
+//Edit-book
+
+app.get("/edit-book/:id", (req, res) => {
+  if (req.session.user !== "admin")
+    return res.status(403).send("Only admin can edit");
+
+  const id = req.params.id;
+
+  db.get("SELECT * FROM books WHERE id=?", [id], (err, book) => {
+    if (err || !book) return res.send("Error fetching book");
+
+    db.all("SELECT * FROM genres", [], (err, genres) => {
+      if (err) return res.send("Error fetching genres");
+
+      genres = genres.map((g) => ({
+        ...g,
+        selected: g.id === book.genre_id ? "selected" : "",
+      }));
+
+      res.render("edit-book", { book, genres });
+    });
+  });
+});
+
+app.post("/edit-book/:id", upload.single("cover"), (req, res) => {
+  if (req.session.user !== "admin")
+    return res.status(403).send("Only admin can edit");
+
+  const id = req.params.id;
+  const { title, author, genre_id, description, oldCover } = req.body;
+
+  let coverPath = oldCover;
+  if (req.file) coverPath = "/uploads/" + req.file.filename;
+
+  db.run(
+    "UPDATE books SET title=?, author=?, cover=?, genre_id=?, description=? WHERE id=?",
+    [title, author, coverPath, genre_id, description, id],
+    (err) => {
+      if (err) return res.send("Error updating book");
+      res.redirect("/books/" + id);
+    }
+  );
+});
 // Routing - Add Book Page
 
 app.get("/add-book", (req, res) => {
