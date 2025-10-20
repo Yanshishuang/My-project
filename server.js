@@ -88,8 +88,6 @@ app.get("/books", (req, res) => {
         title: "Books",
         isAdmin,
       });
-      // console.log(rows);
-      // res.render('books',{ books: rows, title: "books"});
     }
   );
 });
@@ -102,10 +100,30 @@ app.get("/books/:id", (req, res) => {
         WHERE books.id=?`,
     [id],
     (err, row) => {
-      if (err) console.log(err);
-      res.render("book-detail", { ...row, title: row.title });
+      if (err) {
+        console.log(err);
+        return res.send("Error fetching book");
+      }
+      res.render("book-detail", {
+        ...row,
+        title: row.title,
+        isAdmin: req.session.user === "admin",
+      });
     }
   );
+});
+
+//Delete-book
+
+app.get("/delete-book/:id", (req, res) => {
+  if (req.session.user !== "admin") {
+    return res.status(403).send("Only admin can delete books");
+  }
+  const id = req.params.id;
+  db.run("DELETE FROM books WHERE id=?", [id], (err) => {
+    if (err) return res.send("Error deleting book");
+    res.redirect("/books");
+  });
 });
 
 // Routing - Add Book Page

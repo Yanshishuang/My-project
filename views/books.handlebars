@@ -1,22 +1,31 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books page</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Books List</h1>
     <ul>
-        {{#each books}}
+      {{#each books}}
         <li>
-            <a href="/books/{{id}}">
-            <img src="{{cover}}" alt="{{title}}"width="100">
-            <strong>{{title}}</strong> by {{author}}
-            </a>
-            <p>Genre:{{genre_name}}</p>
+          <a href="/books/{{id}}">
+            <img src="{{cover}}" alt="{{title}}" width="100" />
+            <strong>{{title}}</strong>
+            by
+            {{author}}
+          </a>
+          <p>Genre:{{genre_name}}</p>
+
+          {{#if ../isAdmin}}
+            <a href="/edit-book/{{id}}">Edit</a>
+            <a
+              href="/delete-book/{{id}}"
+              onclick="return confirm('Are you sure?')"
+            >Delete</a>
+          {{/if}}
         </li>
-        {{/each}}
+      {{/each}}
     </ul>
-</body>
+  </body>
 </html>
