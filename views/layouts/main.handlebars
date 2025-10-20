@@ -9,7 +9,9 @@
     <nav>
       <a href="/" class="nav-tag">Home</a>
       <a href="/books" class="nav-tag">Books</a>
-      <a href="/add-book" class="nav-tag">Add Book</a>
+      {{#if isAdmin}}
+        <a href="/add-book" class="nav-tag">Add Book</a>
+      {{/if}}
       {{#if session.user}}
         <p class="logout" class="nav-tag">Welcome
           {{session.user}}
