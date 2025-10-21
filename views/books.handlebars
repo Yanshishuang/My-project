@@ -3,29 +3,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Books List</h1>
-    <ul>
+    <ul class="book-list">
       {{#each books}}
         <li>
-          <a href="/books/{{id}}">
-            <img src="{{cover}}" alt="{{title}}" width="100" />
-            <strong>{{title}}</strong>
-            by
-            {{author}}
+          <div class="book-container">
+          <a href="/books/{{id}}" class="book-link">
+            <img src="{{cover}}" alt="{{title}}" width="150" height="200" class="cover"/>
+            <strong class="book-title" class="book-link">{{title}}</strong>
+            <p class="book-author">by
+            {{author}}</p>
           </a>
-          <p>Genre:{{genre_name}}</p>
-
+          <p class="book-genre">Genre:{{genre_name}}</p>
+          
           {{#if ../isAdmin}}
-            <a href="/edit-book/{{id}}">Edit</a>
+            <a href="/edit-book/{{id}}" class="admin-button">Edit</a>
             <a
               href="/delete-book/{{id}}"
-              onclick="return confirm('Are you sure?')"
-            >Delete</a>
+              onclick="return confirm('Are you sure?')" class="admin-button">Delete</a>
           {{/if}}
+          </div>
         </li>
       {{/each}}
     </ul>
+
+    <div class="pagination">
+      {{#if prevPage}}
+      <a href="/books?page={{prevPage}}" class="page">Previous</a>
+      {{/if}}
+
+      <p class="page-text">Page {{currentPage}} of {{totalPages}}</p>
+
+      {{#if nextPage}}
+      <a href="/books?page={{nextPage}}" class="page">Next</a>
+      {{/if}}
+    </div>
   </body>
 </html>

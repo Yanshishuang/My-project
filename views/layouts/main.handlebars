@@ -2,7 +2,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Home Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/style.css/style.css" />
   </head>
   <body>
@@ -14,15 +20,19 @@
       {{#if isAdmin}}
         <a href="/add-book" class="nav-tag">Add Book</a>
       {{/if}}
-      {{#if session.user}}
-        <p class="logout" class="nav-tag">Welcome
-          {{session.user}}
-          |
-          <a href="/logout" class="nav-tag">Logout</a></p>
-      {{else}}
-        <a href="/login" class="login nav-tag">Login</a>
-      {{/if}}
+      <div class="user">
+        {{#if session.user}}
+          <p class="name">Welcome
+            {{session.user}}--
+            <a href="/logout" class="log">Logout</a></p>
+        {{else}}
+          <a href="/login" class="log">Login</a>
+        {{/if}}
+      </div>
     </nav>
     {{{body}}}
   </body>
+  <footer>
+    <p>&copy; 2025 My Library. All rights reserved.</p>
+    <p>Designed by ShiShuangYan | Student Project</p></footer>
 </html>

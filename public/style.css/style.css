@@ -1,44 +1,259 @@
 * {
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
 }
+body {
+  font-family: "Montserrat", sans-serif;
+  background-image: url("/background/2.png");
+  background-size: cover;
+  background-position: center;
+}
+/*Style the nav bar and main page*/
 
-/*Style the nav bar*/
-
-h1 {
-  border: 1px solid black;
-  color: blueviolet;
+footer {
+  cursor: grab;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #ff7145;
+  background-color: #fefce1;
+  height: 8vh;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
 
 /* Nav container*/
 
 nav {
-  background-color: blue;
-  border: 1px solid black;
+  background-color: black;
   display: flex;
-  padding-left: 1rem;
-  gap: 2rem;
   align-items: center;
-  padding: none;
-  height: 3rem;
+  gap: 1rem;
+  height: 8vh;
+  font-size: 1rem;
+  border: none;
+  margin: 0;
+  padding: 0 1rem;
+  padding: relative;
+}
+.user {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
 }
 
-.logout,
-.login {
-  border: 1px solid black;
-  margin-left: auto;
+.log,
+.name {
   margin-right: 1rem;
 }
 
-.nav-tag {
+.log {
+  padding: 0.5rem;
+  border: white 0.1rem solid;
+  text-decoration: none;
   color: white;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.log:hover {
+  background-color: #ff7145;
+  border-radius: 0.2rem;
+}
+.name {
+  color: #bbbaad;
+}
+.nav-tag {
+  color: #bbbaad;
   text-decoration: none;
   text-align: center;
-  height: 1rem;
-  border: 1px solid black;
-  font-size:large ;
+  margin: 0 0.5rem;
 }
 
 .nav-tag:hover {
-  color: blueviolet;
+  border-bottom: 0.2rem solid #ff7145;
+}
+
+/* Body of home page*/
+
+.home-title {
+  height: 84vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-span {
+  color: #ff7145;
+  font-weight: 900;
+  font-size: 6rem;
+  transition: all 0.3s ease;
+}
+
+.home-span:hover {
+  color: #fefce1;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.home-span2 {
+  color: #fefce1;
+  font-weight: 900;
+  font-size: 6rem;
+  transition: all 0.3s ease;
+}
+
+.home-span2:hover {
+  color: #ff7145;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.home-sub {
+  color: #dad6c8;
+  font-size: 1.5rem;
+}
+
+/* book list page*/
+
+.book-list {
+  color: #fefce1;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  height: 80vh;
+  width: 50vw;
+  padding: 0;
+  margin: auto;
+}
+.pagination {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid white;
+  color: white;
+  height: 4vh;
+  justify-content: center;
+  gap: 1rem;
+}
+.page,
+.page-text {
+  height: 4vh;
+  padding-top: 0.3rem;
+  text-decoration: none;
+  color: #bbbaad;
+}
+
+.page:hover {
+  color: #ff7145;
+  font-weight: 500;
+}
+
+.book-container {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.book-link {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 260px;
+  border: white 1px solid;
+  border-radius: 3rem;
+  margin: auto;
+  transition: all 0.3s ease;
+  color: #bbbaad;
+  text-decoration: none;
+}
+
+.book-link:hover {
+  background: #ff7145;
+  border-radius: 1rem;
+}
+.cover {
+  margin: auto;
+}
+
+.book-genre {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.admin-button {
+  color: #ff7145;
+  text-decoration: none;
+}
+
+.admin-button:hover {
+  color: #bbbaad;
+}
+
+/*Details-page style*/
+
+.detail-book {
+  color: #bbbaad;
+  border: 1px white solid;
+  border-radius: 1rem;
+  width: 50vw;
+  height: 74vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 10vh;
+}
+
+.detail-cover {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail-title {
+  color: #ff7145;
+  margin-top: 3rem;
+}
+
+.back-to-list {
+  text-decoration: none;
+  color: #ff7145;
+  font-weight: 500;
+}
+
+.back-to-list:hover {
+  text-transform: uppercase;
+}
+
+/*Edit page*/
+
+.edit-title {
+  color: #ff7145;
+  margin: auto;
+  width: 12rem;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.edit-form {
+  margin: auto;
+  color: #bbbaad;
+  font-size: 1rem;
+  border: 1px solid white;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
 }

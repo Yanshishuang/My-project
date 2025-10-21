@@ -72,25 +72,38 @@ app.get("/", (req, res) => {
 
 // Routing - Books Page
 app.get("/books", (req, res) => {
-  db.all(
-    `SELECT books.*, genres.name AS genre_name
-        FROM books
-        INNER JOIN genres ON books.genre_id = genres.id`,
-    [],
-    (err, rows) => {
-      if (err) {
-        console.log(err);
-      }
-      const isAdmin = req.session.user === "admin";
+  const page = parseInt(req.query.page) || 1;
+  const perPage = 4;
+  const offset = (page - 1) * perPage;
 
-      res.render("books", {
-        books: rows,
-        title: "Books",
-        isAdmin,
-      });
-    }
-  );
+  db.get("SELECT COUNT(*) AS count FROM books", (err, countResult) => {
+    if (err) return res.send("Databas error");
+
+    const totalBooks = countResult.count;
+    const totalPages = Math.ceil(totalBooks / perPage);
+
+    db.all(
+      `SELECT books.*, genres.name AS genre_name FROM books 
+      INNER JOIN genres ON books.genre_id = genres.id
+      LIMIT ? OFFSET ?`,
+      [perPage, offset],
+      (err, rows) => {
+        if (err) return res.send("Database error");
+
+        res.render("books", {
+          books: rows,
+          title: "Books",
+          currentPage: page,
+          totalPages,
+          prevPage: page > 1 ? page - 1 : null,
+          nextPage: page < totalPages ? page + 1 : null,
+          isAdmin: req.session.user === "admin",
+        });
+      }
+    );
+  });
 });
+
 app.get("/books/:id", (req, res) => {
   const id = req.params.id;
   db.get(
