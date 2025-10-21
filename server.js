@@ -200,6 +200,22 @@ app.post("/add-book", upload.single("cover"), (req, res) => {
   );
 });
 
+// Routing - About Page
+
+app.get("/about", (req, res) => {
+  res.render("about", {
+    title: "about",
+  });
+});
+
+// Routing - Contact Page
+
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    title: "Contact",
+  });
+});
+
 // Routing - Login Page
 app.get("/login", (req, res) => {
   res.render("login");

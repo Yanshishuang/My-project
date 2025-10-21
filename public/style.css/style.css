@@ -20,7 +20,7 @@ nav {
   gap: 2rem;
   align-items: center;
   padding: none;
-  height: 4rem;
+  height: 3rem;
 }
 
 .logout,
@@ -35,7 +35,8 @@ nav {
   text-decoration: none;
   text-align: center;
   height: 1rem;
-  background-color: black;
+  border: 1px solid black;
+  font-size:large ;
 }
 
 .nav-tag:hover {
