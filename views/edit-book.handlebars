@@ -49,10 +49,8 @@
       <input type="hidden" name="oldCover" value="{{book.cover}}" />
       <br />
 
-      <button type="submit">Update Book</button>
+      <button type="submit" class="update-book">Update Book</button>
+      <a href="/books/{{book.id}}" class="cancel-button">Cancel</a>
     </form>
-
-    <a href="/books/{{book.id}}">Cancel</a>
-
   </body>
 </html>

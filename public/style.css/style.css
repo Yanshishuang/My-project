@@ -141,7 +141,6 @@ nav {
 .pagination {
   display: flex;
   flex-direction: row;
-  border: 1px solid white;
   color: white;
   height: 4vh;
   justify-content: center;
@@ -155,9 +154,18 @@ nav {
   color: #bbbaad;
 }
 
+.page{
+  border: 1px solid #bbbaad;
+  border-radius: 2rem;
+  width: 5rem;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
 .page:hover {
-  color: #ff7145;
   font-weight: 500;
+  background: #ff7145;
+  border-radius: 0.2rem;
 }
 
 .book-container {
@@ -196,10 +204,12 @@ nav {
 .admin-button {
   color: #ff7145;
   text-decoration: none;
+  transition: all 0.5s ease;
 }
 
 .admin-button:hover {
   color: #bbbaad;
+  transform: scale(1.2);
 }
 
 /*Details-page style*/
@@ -229,13 +239,21 @@ nav {
 }
 
 .back-to-list {
+  margin: auto;
   text-decoration: none;
-  color: #ff7145;
+  width: 30%;
+  background: #ff7145;
+  color: black;
   font-weight: 500;
+  transition: all 0.5s ease;
+  border: 1px solid white;
+  border-radius: 1rem;
 }
 
 .back-to-list:hover {
-  text-transform: uppercase;
+  transform: scale(1.5);
+  color:#bbbaad;
+  font-weight: 900;
 }
 
 /*Edit page*/
@@ -245,15 +263,125 @@ nav {
   margin: auto;
   width: 12rem;
   text-align: center;
-  border: 1px solid white;
 }
 
 .edit-form {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
   color: #bbbaad;
   font-size: 1rem;
-  border: 1px solid white;
   width: 50vw;
   display: flex;
   flex-direction: column;
+}
+
+.edit-form label{
+  width: 100%;
+  text-align: left;
+}
+
+.edit-form input,
+.edit-form select,
+.edit-form textarea{
+  width: 100%;
+}
+
+.update-book{
+  height: 2rem;
+  background: #ff7145;
+  border: #bbbaad;
+  border-radius: 1rem;
+  font-weight: 900;
+  transition: all 0.5s ease;
+}
+
+.update-book:hover{
+  border-radius: 0.2rem;
+  color: #bbbaad;
+  transform: scale(1.1);
+}
+
+.cancel-button{
+  border-radius: 0.2rem;
+  width: 5rem;
+  margin-left:auto;
+  margin-right: auto;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 1rem;
+  background: #ff7145;
+  color: black;
+  font-weight: 900;
+  transition: all 0.5s ease;
+}
+
+.cancel-button:hover{
+  transform: scale(1.1);
+  color: #bbbaad;
+}
+
+/*Add book page */
+
+.addBook-title {
+  color: #ff7145;
+  margin: auto;
+  width: 20rem;
+  text-align: center;
+}
+
+.addBook-form {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  color: #bbbaad;
+  font-size: 1rem;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.addBook-form label{
+  width: 100%;
+  text-align: left;
+}
+
+.addBook-form input,
+.addBook-form select,
+.addBook-form textarea{
+  width: 100%;
+}
+
+.add-book{
+  height: 2rem;
+  background: #ff7145;
+  border: #bbbaad;
+  border-radius: 1rem;
+  font-weight: 900;
+  transition: all 0.5s ease;
+}
+
+.add-book:hover{
+  border-radius: 0.2rem;
+  color: #bbbaad;
+  transform: scale(1.1);
+}
+
+.cancel-add{
+  border-radius: 0.2rem;
+  width: 10rem;
+  margin-left:auto;
+  margin-right: auto;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 1rem;
+  background: #ff7145;
+  color: black;
+  font-weight: 900;
+  transition: all 0.5s ease;
+}
+
+.cancel-add:hover{
+  transform: scale(1.1);
+  color: #bbbaad;
 }

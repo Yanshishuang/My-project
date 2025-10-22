@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Book</title>
+    <link rel="stylesheet" href="/style.css/style.css" />
+  </head>
 </head>
 <body>
-    <h1>Add New Book</h1>
+    <h1 class="addBook-title">Add New Book</h1>
 
-    <form action="/add-book" method="post" enctype="multipart/form-data">
+    <form action="/add-book" method="post" enctype="multipart/form-data" class="addBook-form">
     <label for="title">Title: <input type="text" name="title" required></label><br>
     <label for="author">Author: <input type="text" name="author" required></label><br>
     <label for="genre">Genre: 
@@ -23,9 +25,8 @@
     </label><br>
     <label for="cover">Cover Image: <input type="file" name="cover" accept="image/*" required>
     </label><br>
-    <button type="submit">Add Book</button>
+    <button type="submit" class="add-book">Add Book</button>
+    <a href="/books"  class="cancel-add">Back to Book List</a>
     </form>
-
-    <a href="/books">Back to Book List</a>
 </body>
 </html>
