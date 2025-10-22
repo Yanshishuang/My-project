@@ -1,21 +1,23 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login page</title>
-</head>
-<body>
-    <h1>Login</h1>
+  </head>
+  <body>
+    <main class="login">
+      <h1 class="login-title">Login</h1>
 
-    {{#if error}}
-    <p style="color:red">{{error}}</p>
-    {{/if}}
-    <form action="/login" method="post">
-    <label for="username">Username: <input type="text" name="username"></label><br>
-    <label for="password">Password: <input type="password" name="password"></label><br>
-    <button type="submit">Login</button>
-    </form>
-    
-</body>
+      {{#if error}}
+        <p style="color:red">{{error}}</p>
+      {{/if}}
+      <form action="/login" method="post" class="login-form">
+        <label for="username">Username:
+          <input type="text" name="username" /></label><br />
+        <label for="password">Password:
+          <input type="password" name="password" /></label><br />
+        <button type="submit" class="login-button">Login</button>
+      </form>
+    </main>
+  </body>
 </html>

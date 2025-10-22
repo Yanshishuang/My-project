@@ -3,8 +3,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
+    <link rel="stylesheet" href="/style.css/style.css" />
   </head>
   <body>
+    <main class="contact-page">
+      <h1 class="contact-title">
+  <span>G</span><span>e</span><span>t</span><span> </span><span>i</span><span>n</span><span> </span><span>T</span><span>o</span><span>u</span><span>c</span><span>h</span>
+</h1>
+      <p class="contact-subtitle">
+        We'd love to hear from you — whether it's feedback, collaboration, or
+        just a hello!
+      </p>
+
+      <form action="/contact" method="POST" class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="send-button">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <p>Email: yash24oy@student.ju.se</p>
+        <p>Address: Jönköping, idrottsvägen 5 </p>
+        <p>Phone: +46 739 755 514</p>
+      </div>
+    </main>
 
   </body>
 </html>
