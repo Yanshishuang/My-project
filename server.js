@@ -1,3 +1,14 @@
+/*
+ShiShuang Yan - yash24oy@student.ju.se
+
+Target grade: 5
+
+ShiShuangYan Library Project - 2025
+
+Administrator login: admin
+Administrator password: "wdf#2025" ---> "$2b$12$11tWiwA6aGGisN73RT8GFOtvjYQwkUIKhQzt3Emol9qN6tNTiQKsm"
+*/
+
 //Load module
 const express = require("express");
 const { engine } = require("express-handlebars");
